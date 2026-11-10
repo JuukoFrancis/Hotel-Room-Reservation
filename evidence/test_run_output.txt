@@ -1,0 +1,40 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/Room-Reservation
+configfile: pytest.ini
+testpaths: tests
+plugins: platformdirs-4.13.5, anyio-4.15.1
+collecting ... collected 29 items
+
+tests/test_t1_br1_time_slot.py::test_t1_br1_accepts_valid_time_slots PASSED [  3%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_accepts_boundary_time_slots PASSED [  6%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[07:00] PASSED [ 10%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[20:00] PASSED [ 13%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[9:00] PASSED [ 17%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[09:30] PASSED [ 20%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[] PASSED [ 24%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[A10] PASSED [ 27%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[24:00] PASSED [ 31%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_equality_is_by_value PASSED  [ 34%]
+tests/test_t2_br2_reservation_state.py::test_t2_br2_new_reservation_is_pending PASSED [ 37%]
+tests/test_t2_br2_reservation_state.py::test_t2_br2_pending_can_be_confirmed PASSED [ 41%]
+tests/test_t2_br2_reservation_state.py::test_t2_br2_confirming_twice_is_rejected PASSED [ 44%]
+tests/test_t3_br3_no_double_allocation.py::test_t3_br3_available_slot_can_be_reserved_once PASSED [ 48%]
+tests/test_t3_br3_no_double_allocation.py::test_t3_br3_same_slot_twice_is_rejected PASSED [ 51%]
+tests/test_t3_br3_no_double_allocation.py::test_t3_br3_other_slot_and_other_room_are_independent PASSED [ 55%]
+tests/test_t4_br4_eligibility.py::test_t4_br4_below_limit_is_eligible PASSED [ 58%]
+tests/test_t4_br4_eligibility.py::test_t4_br4_boundary_exactly_four_is_rejected PASSED [ 62%]
+tests/test_t4_br4_eligibility.py::test_t4_br4_started_room_day_is_rejected PASSED [ 65%]
+tests/test_t4_br4_eligibility.py::test_t4_br4_boundary_exactly_at_start_time_is_rejected PASSED [ 68%]
+tests/test_t4_br4_eligibility.py::test_t4_br4_other_member_or_other_room_do_not_count PASSED [ 72%]
+tests/test_t5_br5_domain_event.py::test_t5_br5_confirm_raises_event_with_correct_data PASSED [ 75%]
+tests/test_t5_br5_domain_event.py::test_t5_br5_no_event_when_confirmation_is_rejected PASSED [ 79%]
+tests/test_t5_br5_domain_event.py::test_t5_br5_handler_reserves_the_slot PASSED [ 82%]
+tests/test_t6_br6_lookup.py::test_t6_br6_missing_reservation_is_rejected PASSED [ 86%]
+tests/test_t6_br6_lookup.py::test_t6_br6_existing_reservation_proceeds PASSED [ 89%]
+tests/test_t6_br6_lookup.py::test_t6_br6_repository_returns_none_for_unknown_id PASSED [ 93%]
+tests/test_t7_t8_main_use_case.py::test_t7_main_use_case_success PASSED  [ 96%]
+tests/test_t7_t8_main_use_case.py::test_t8_room_rejects_follow_up_when_slot_already_taken PASSED [100%]
+
+============================== 29 passed in 0.05s ==============================

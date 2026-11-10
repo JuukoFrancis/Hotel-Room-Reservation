@@ -1,0 +1,125 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/Room-Reservation
+configfile: pytest.ini
+plugins: platformdirs-4.13.5, anyio-4.15.1
+collecting ... collected 10 items
+
+tests/test_t1_br1_time_slot.py::test_t1_br1_accepts_valid_time_slots FAILED [ 10%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_accepts_boundary_time_slots FAILED [ 20%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[07:00] FAILED [ 30%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[20:00] FAILED [ 40%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[9:00] FAILED [ 50%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[09:30] FAILED [ 60%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[] FAILED [ 70%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[A10] FAILED [ 80%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[24:00] FAILED [ 90%]
+tests/test_t1_br1_time_slot.py::test_t1_br1_equality_is_by_value PASSED  [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_t1_br1_accepts_valid_time_slots _____________________
+
+    def test_t1_br1_accepts_valid_time_slots():
+        assert TimeSlot("09:00").value == "09:00"
+>       assert TimeSlot("13:00").hour == 13
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TimeSlot' object has no attribute 'hour'
+
+tests/test_t1_br1_time_slot.py:10: AttributeError
+___________________ test_t1_br1_accepts_boundary_time_slots ____________________
+
+    def test_t1_br1_accepts_boundary_time_slots():
+>       assert TimeSlot("08:00").hour == 8      # first valid slot
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TimeSlot' object has no attribute 'hour'
+
+tests/test_t1_br1_time_slot.py:14: AttributeError
+________________ test_t1_br1_rejects_invalid_time_slots[07:00] _________________
+
+bad = '07:00'
+
+    @pytest.mark.parametrize("bad", ["07:00", "20:00", "9:00", "09:30", "", "A10", "24:00"])
+    def test_t1_br1_rejects_invalid_time_slots(bad):
+>       with pytest.raises(InvalidTimeSlotError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE InvalidTimeSlotError
+
+tests/test_t1_br1_time_slot.py:20: Failed
+________________ test_t1_br1_rejects_invalid_time_slots[20:00] _________________
+
+bad = '20:00'
+
+    @pytest.mark.parametrize("bad", ["07:00", "20:00", "9:00", "09:30", "", "A10", "24:00"])
+    def test_t1_br1_rejects_invalid_time_slots(bad):
+>       with pytest.raises(InvalidTimeSlotError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE InvalidTimeSlotError
+
+tests/test_t1_br1_time_slot.py:20: Failed
+_________________ test_t1_br1_rejects_invalid_time_slots[9:00] _________________
+
+bad = '9:00'
+
+    @pytest.mark.parametrize("bad", ["07:00", "20:00", "9:00", "09:30", "", "A10", "24:00"])
+    def test_t1_br1_rejects_invalid_time_slots(bad):
+>       with pytest.raises(InvalidTimeSlotError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE InvalidTimeSlotError
+
+tests/test_t1_br1_time_slot.py:20: Failed
+________________ test_t1_br1_rejects_invalid_time_slots[09:30] _________________
+
+bad = '09:30'
+
+    @pytest.mark.parametrize("bad", ["07:00", "20:00", "9:00", "09:30", "", "A10", "24:00"])
+    def test_t1_br1_rejects_invalid_time_slots(bad):
+>       with pytest.raises(InvalidTimeSlotError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE InvalidTimeSlotError
+
+tests/test_t1_br1_time_slot.py:20: Failed
+___________________ test_t1_br1_rejects_invalid_time_slots[] ___________________
+
+bad = ''
+
+    @pytest.mark.parametrize("bad", ["07:00", "20:00", "9:00", "09:30", "", "A10", "24:00"])
+    def test_t1_br1_rejects_invalid_time_slots(bad):
+>       with pytest.raises(InvalidTimeSlotError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE InvalidTimeSlotError
+
+tests/test_t1_br1_time_slot.py:20: Failed
+_________________ test_t1_br1_rejects_invalid_time_slots[A10] __________________
+
+bad = 'A10'
+
+    @pytest.mark.parametrize("bad", ["07:00", "20:00", "9:00", "09:30", "", "A10", "24:00"])
+    def test_t1_br1_rejects_invalid_time_slots(bad):
+>       with pytest.raises(InvalidTimeSlotError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE InvalidTimeSlotError
+
+tests/test_t1_br1_time_slot.py:20: Failed
+________________ test_t1_br1_rejects_invalid_time_slots[24:00] _________________
+
+bad = '24:00'
+
+    @pytest.mark.parametrize("bad", ["07:00", "20:00", "9:00", "09:30", "", "A10", "24:00"])
+    def test_t1_br1_rejects_invalid_time_slots(bad):
+>       with pytest.raises(InvalidTimeSlotError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE InvalidTimeSlotError
+
+tests/test_t1_br1_time_slot.py:20: Failed
+=========================== short test summary info ============================
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_accepts_valid_time_slots
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_accepts_boundary_time_slots
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[07:00]
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[20:00]
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[9:00]
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[09:30]
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[]
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[A10]
+FAILED tests/test_t1_br1_time_slot.py::test_t1_br1_rejects_invalid_time_slots[24:00]
+========================= 9 failed, 1 passed in 0.05s ==========================
